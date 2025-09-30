@@ -40,20 +40,37 @@ while (is_sentence(user_sentence) == False):
 
 
 
+
+
 sentence = input("Enter a sentence: ")
 
-words = sentence.split()
+while not is_sentence(sentence):
+    print("That doesn't look like a valid sentence. Please try again.")
+    sentence = input("Enter a sentence: ")
+
+
+sentence = sentence.lower()
+
+
+tokens = sentence.split()
+
+
+punct = ".,!?;:\"'()[]{}"
+words = []
+for t in tokens:
+    w = t.strip(punct)
+    if w != "":
+        words.append(w)
+
 
 unique_words = []
 frequencies = []
 
-
 for w in words:
     if w in unique_words:
-        index = unique_words.index(w)
-        frequencies[index] = frequencies[index] + 1
+        idx = unique_words.index(w)
+        frequencies[idx] = frequencies[idx] + 1
     else:
-        
         unique_words.append(w)
         frequencies.append(1)
 
@@ -62,3 +79,5 @@ print("Word frequencies:")
 for i in range(len(unique_words)):
     print(unique_words[i], ":", frequencies[i])
 
+
+print("This sentence has", len(words), "words.")
