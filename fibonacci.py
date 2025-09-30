@@ -8,8 +8,11 @@
 
 
 
+
+
 num_terms = int(input("Enter how many terms of the Fibonacci sequence you want: "))
 
+# if the number is not positive, show an error once and stop
 if num_terms <= 0:
     print("Error: please run the program again and enter a positive integer.")
 else:
